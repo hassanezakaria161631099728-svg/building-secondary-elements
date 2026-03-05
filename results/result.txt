@@ -1,0 +1,12 @@
+-----------------
+height_stairs 1530
+
+vertical_step 180
+
+Number of stairs 9
+
+horizontal_step 250
+
+Stair length 2250
+
+Comfort rule validated
