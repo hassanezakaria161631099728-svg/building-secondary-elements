@@ -1,25 +1,16 @@
-#include "io.h"
 #include "expressions.h"
+#include "io.h"
+
 int main()
 {
-    // 1. Read TXT
-    BeamData d = readInput("input.txt");
+    double height_floor = 3.06;
+    int height_stairs = height_floor / 2 * 1000;
+    int vertical_step = 180;
+    int horizontal_step = 250;
 
-    // 2. Calculate
-    // scalar
-    double delta = computeDeflection(d, d.I, d.E);
-    double fx = computef(d, d.IX, d.EC);
-    double fy = computef(d, d.IY, d.EC);
-    //  matrices
-    auto SA = createSAMatrix(d.nFloors);
-    auto Sx  = multiplyscamat(fx, SA);
-    auto Sy  = multiplyscamat(fy, SA);
-    auto M = buildMassMatrix(d);
-    auto Dx = multiplymatmat(Sx, M);
-    auto Dy = multiplymatmat(Sy, M);
-    Matrix phi,LA;
-    eigenDecomposition(Dx, phi, LA);
-    // 3. Write results
-    writeOutput("output2.txt", delta, fx, fy, SA, Sx, Sy, M, Dx, Dy, phi, LA);
+    stair_result result = stairs(height_stairs, vertical_step, horizontal_step);
+
+    write_result("result.txt", result);
+
     return 0;
 }
