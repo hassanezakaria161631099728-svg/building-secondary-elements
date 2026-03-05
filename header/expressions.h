@@ -1,23 +1,12 @@
 #pragma once
-#include "structs.h"
-#include <vector>
+struct stair_result
+{
+    int height_stairs;
+    int vertical_step;
+    int n_stairs;
+    int horizontal_step;
+    int length_stairs;
+    bool rule_valid;
+};
 
-double computeDeflection(const BeamData& d, double I, double E);
-double computef(const BeamData& d, double I, double E);
-std::vector<std::vector<double>>
-buildMassMatrix(const BeamData& d);
-std::vector<std::vector<double>>
-createSAMatrix(int n);
-std::vector<std::vector<double>>
-multiplymatmat(const std::vector<std::vector<double>>& A,
-         const std::vector<std::vector<double>>& B);
-std::vector<std::vector<double>>
-multiplyscamat(double a,
-         const std::vector<std::vector<double>>& B);
-
-using Matrix = std::vector<std::vector<double>>;
-
-void eigenDecomposition(
-    const Matrix& A,
-    Matrix& B,
-    Matrix& C);
+stair_result stairs(int height_stairs, int vertical_step,int horizontal_step);
